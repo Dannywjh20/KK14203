@@ -1,0 +1,15 @@
+class BlackForest extends Cake {
+
+	 BlackForest(String name){
+		 super(name);	 
+	 }
+
+	
+	 
+	  public void setCake(String[] t, double ps, double pm, double pb){
+	      topping = t;
+	      priceSmall = ps;
+	      priceMedium = pm;
+	      priceBig = pb;
+	   }
+}
