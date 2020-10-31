@@ -1,0 +1,99 @@
+//Name:DANNY WONG JIA HONG
+//Matric no: BI19110060
+//Section:1 oop
+//Lab5_exercise3
+
+abstract class Cake{
+	   String name;
+	   String[] topping;
+	   String[] toppingOrder;
+	   double priceSmall;
+	   double priceMedium;
+	   double priceBig;
+	   double totalPrice;
+	   int size;
+	   int quantity;
+	   
+	   Cake(String name){
+			 this.name=name;
+			 
+		 }
+	
+	  
+	   public abstract void setCake(String[] t, double ps, double pm, double pb);
+	      
+	   
+	   public void cakeOrder(String[] to, int q, int s){
+	      toppingOrder = to;
+	      quantity = q;
+	      size = s;
+	   }
+	   
+	   public double getSizePrice(){
+	      double sprice=0.0;
+	      if(size==1) sprice = priceSmall;
+	      else if(size==2) sprice = priceMedium;
+	      else if(size==3) sprice = priceBig;
+	      
+	      return sprice;
+	   }
+	   
+	   public double getTotalPrice(){
+	      totalPrice = getSizePrice();
+	      totalPrice *= quantity;
+	      totalPrice += (toppingOrder.length*10);
+	      return totalPrice;  
+	   }
+	   
+	   public String getSize(){
+	      String size_str="";
+	      if(size==1) size_str="Small";
+	      else if (size==2) size_str="Medium";
+	      else if (size==3) size_str="Large";
+	      return size_str;
+	   }
+	   
+	   public void printCake(){
+	      System.out.println("-----------------------------");
+	      System.out.println("           Cake Menu");
+	      System.out.println("-----------------------------");
+	      System.out.println(name + " Cake with available toppings:");
+	      for(int i=0; i<topping.length; i++){
+	         System.out.println(i+1 + ") " + topping[i]);
+	      } 
+	      System.out.println("\nPrice:");
+	      System.out.println("[1] Small : RM" + priceSmall);
+	      System.out.println("[2] Medium: RM" + priceMedium);
+	      System.out.println("[3] Big   : RM" + priceBig);
+	   }
+	   
+	   public void printOrder(){
+	      System.out.println("\n\nCake Order detail:");
+	      System.out.println("-------------------------------------------");
+	      System.out.print("Topping : ");
+	      for(int i=0; i<toppingOrder.length; i++){
+	         System.out.print(i+1 + ") " + toppingOrder[i] + " ");
+	      } 
+	      System.out.println("\nSize    : " + getSize());
+	      System.out.println("-------------------------------------------");
+	      System.out.println("Total Price: RM" + getTotalPrice()); 
+	      System.out.println("-------------------------------------------"); 
+	   }      
+	}
+
+	public class Lab5_exercise3{
+	   public static void main(String args[]){
+	      Cake c = new BlackForest("BlackForest");
+	      //Initialize available selection of toppings and price for small, medium and large
+	      String[] topping = {"Lava Chocolate", "Cream Cheese", "Butter Cream", "Fondant"};
+	      c.setCake(topping, 45.00, 65.00, 80.00);
+	      c.printCake();
+	      
+	      //Initialize order, quantity and size
+	      String[] order = {"Lava Chocolate", "Cream Cheese"};
+	      c.cakeOrder(order, 1, 2);
+	      c.printOrder();
+	      
+	      
+	   }
+	}
