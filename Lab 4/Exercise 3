@@ -1,0 +1,93 @@
+//Name:DANNY WONG JIA HONG
+//Matric no: BI19110060
+//Section:1 oop
+//Lab4_exercise3
+
+import java.util.Scanner;
+
+class Menu{
+    private String item;
+    private double price;
+
+Menu(String i, double p){
+    item = i;
+    price = p;
+ }
+
+ double getPrice() {
+     return price;
+  }
+}
+
+
+public class Lab4_exercise3{
+	 public static void main(String args[]) {
+		 
+		 String itemName;
+		 int quantity=0;
+		 double TotalPriceOfItem=0;
+		 
+		 Scanner sc=new Scanner(System.in);
+		 
+		 System.out.println("Menu Order System :");
+         System.out.println("----------------------------------------");
+         System.out.println("[1] Nasi Lemak	\t   	[RM2.00]");
+         System.out.println("[2] Roti			[RM1.00]");
+         System.out.println("[3] Teh Tarik  \t\t\t[RM1.50]");
+         System.out.println("[4] Kopi O			[RM2.00]");
+         System.out.println("----------------------------------------");
+         System.out.println("Place order [1-4] or type 'e' to exit");
+         
+         do{
+             System.out.print("\nAdd order: ");
+             itemName = sc.next();
+
+             
+              String[] NameOfMenu = {"Nasi Lemak", "Roti", "Teh Tarik", "Kopi O"};
+              double[] PriceOfMenu = {2.0, 1.0, 1.5, 2.0};
+
+               Menu[] menu1 = new Menu[4];
+               for(int i = 0; i < 4 ; i++ ) {
+                  menu1[i] = new Menu(NameOfMenu[i], PriceOfMenu[i]);
+                }
+               switch(itemName.charAt(0)){
+               case '1':
+                   System.out.println("Nasi Lemak");
+                   System.out.print("Quantity : ");
+                   quantity = sc.nextInt();
+                   TotalPriceOfItem += (menu1[0].getPrice() * quantity);
+                   System.out.printf("Price    : RM"+"%.2f%n", menu1[0].getPrice() * quantity , "\n");
+                   break;
+               case '2':
+                   System.out.println("Roti" );
+                   System.out.print("Quantity : ");
+                   quantity = sc.nextInt();
+                   TotalPriceOfItem += (menu1[1].getPrice() * quantity);
+                   System.out.printf("Price    : RM"+"%.2f%n", menu1[1].getPrice() * quantity , "\n");
+                   break;
+               case '3':
+                   System.out.println("Teh Tarik");
+                   System.out.print("Quantity : ");
+                   quantity = sc.nextInt();
+                   TotalPriceOfItem += (menu1[2].getPrice() * quantity);
+                   System.out.printf("Price    : RM"+"%.2f%n", menu1[2].getPrice() * quantity , "\n");
+                   break;
+               case '4':
+                  System.out.println("Kopi O");
+                  System.out.print("Quantity : ");
+                  quantity = sc.nextInt();
+                  TotalPriceOfItem += (menu1[3].getPrice() * quantity);
+                  System.out.printf("Price    : RM"+"%.2f%n", menu1[3].getPrice() * quantity, "\n");
+                  break;
+              default:
+              break;
+             }
+         } while (itemName.charAt(0)!='e');
+         
+         System.out.println("\nThank you for your order.");
+         System.out.printf("Total due: RM %.2f", TotalPriceOfItem);
+         sc.close();
+
+    }
+
+    }
